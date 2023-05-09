@@ -1,0 +1,78 @@
+@extends('admin_dashboard')
+@section('admin')
+
+<div class="content">
+
+    <!-- Start Content-->
+    <div class="container-fluid">
+        
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <a href="{{ route('add.employee') }}" class="btn btn-primary rounded-pill waves-effect waves-light ">Add Employee</a>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">All Employees</h4>
+                </div>
+            </div>
+        </div>     
+        <!-- end page title --> 
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="text-muted font-13 mb-4">
+
+
+                        </p>
+
+                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                            <thead>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Salary</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                        
+                        
+                            <tbody>
+                                @foreach($employee as $key=>$item) 
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->phone }}</td>
+                                    <td>{{ $item->salary }}</td>
+                                    <td>
+                                    <a href="{{ route('edit.employee', $item->id) }}" class="btn btn-success btn-sm">Edit</a>
+                                    <a href="{{ route('delete.employee', $item->id) }}" class="btn btn-danger btn-sm" id="delete" >Delete</a>
+
+                                    </td>
+                                    
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                    </div> <!-- end card body-->
+                </div> <!-- end card -->
+            </div><!-- end col-->
+        </div>
+        <!-- end row-->
+        <!-- end row-->
+        
+    </div> <!-- container -->
+
+</div> <!-- content -->
+
+
+
+@endsection
